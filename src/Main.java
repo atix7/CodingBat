@@ -268,9 +268,53 @@ public class Main {
             System.out.print("Count :  ");
             return count;
         }*/
-    public static boolean sum28(int[] nums) {
-        return true;
+    /*public static boolean sum28(int[] nums) {
+        int sum=0;
+        for (int i : nums
+        ) {
+            if (i==2){
+                sum+=i;
+            }
+        }
+        if (sum==8){
+            return true;
+        }else return false;
+    }*/
+
+    /*Return a version of the given array where each zero value in the array is replaced by the largest
+    odd value to the right of the zero in the array. If there is no odd value to the right of the zero,
+     leave the zero as a zero.
+    zeroMax([0, 5, 0, 3]) → [5, 5, 3, 3]
+    zeroMax([0, 4, 0, 3]) → [3, 4, 3, 3]
+    zeroMax([0, 1, 0]) → [1, 1, 0]                         */
+    /*public static int[] zeroMax(int[] nums) {
+        int result[] = new int[nums.length];
+        int count = 0;
+        int max = 0;
+        for (int i = nums.length - 1; i >= 0; i--) {
+            if (nums[i] % 2 != 0) {
+                max = Math.max(max, nums[i]);
+            }
+            if (nums[i] == 0)
+                nums[i] = max;
+        }
+        for (int n: nums)
+            System.out.println(n);
+
+        return nums;
+    }*/
+    public static int[] notAlone(int[] nums, int val) {
+        for (int i = 0; i < nums.length; i++) {
+            if (i > 0 && i < nums.length-1 && nums[i] == val) {
+                if (nums[i] != nums[i-1] && nums[i] != nums[i+1])
+                    nums[i] = Math.max(nums[i-1], nums[i+1]);
+            }
+        }
+        for (int n : nums)
+            System.out.println(n);
+        return nums;
     }
+
 
     public static void main(String[] args) {
         //System.out.println(last2("hixxhi"));
@@ -290,6 +334,8 @@ public class Main {
         //System.out.println(lucky13(new int[]{9, 2, 5, 2}));                //04.11.Array-2
         //System.out.println(zeroFront(new int[]{0,1, 1, 0,1}));                //04.11.Array-2
         //System.out.println(maxSpan(new int[]{1, 2, 8, 2, 2, 8, 2}));                //04.12.Array-3
-        System.out.println(sum28(new int[]{2, 3, 2, 2, 4, 2}));                //04.12.Array-3
+        //System.out.println(sum28(new int[]{2, 3, 2, 2, 4, 2,2}));                //05.09.Array-2
+        //System.out.println(zeroMax(new int[]{0, 5, 0, 3}));                //05.11.Array-2
+        System.out.println(notAlone(new int[]{1, 1, 1, 2}, 1));                //05.11.Array-2
     }
 }
